@@ -1,8 +1,6 @@
-from entertainment.entertainment.base.models.AuditCreatedBy import AuditCreatedBy
-from entertainment.entertainment.base.models.AuditTimeStamp import AuditTimeStamp
-from entertainment.entertainment.base.models.AuditUpdatedBy import AuditUpdatedBy
+from entertainment.base.models.AuditTimeStamp import AuditTimeStamp
 
 
-class Audit(AuditTimeStamp, AuditCreatedBy, AuditUpdatedBy):
+class Audit(AuditTimeStamp):
     class Meta:
         abstract = True
