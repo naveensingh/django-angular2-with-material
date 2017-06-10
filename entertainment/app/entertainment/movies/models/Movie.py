@@ -9,9 +9,9 @@ from app.entertainment.movies.models.Genre import Genre
 
 class Movie(Slug, Audit):
     title = models.CharField(max_length=100, blank=False, null=False)
-    plot = models.TextField(blank=True)
-    release_date = models.DateTimeField(blank=True)
-    rating = models.FloatField(default=0)
+    plot = models.TextField(blank=True, null=True)
+    release_date = models.DateTimeField(blank=True, null=True)
+    rating = models.FloatField(null=True, blank=True)
     rank = models.FloatField(null=True, blank=True)
     year = models.FloatField(null=True, blank=True)
     image_url = models.URLField(null=True, blank=True)
