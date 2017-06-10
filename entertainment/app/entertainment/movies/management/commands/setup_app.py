@@ -26,6 +26,7 @@ class Command(BaseCommand):
         for item in self.content:
             movie = Movie()
             movie.title = item["title"]
+            movie.year = item["year"]
             movie.release_date = item["info"].get("release_date")
             movie.rating = item["info"].get("rating")
             movie.plot = item["info"].get("plot")
@@ -46,5 +47,7 @@ class Command(BaseCommand):
                     act = Genre.objects.get_or_create(name=genre)[0]
                     movie.genres.add(act)
             movie.save()
-        print({"total_movies_added": len(self.content)})
+            print "Movie:%s added successfully" % movie.title
+            print "-"
+        print "Total movies added: %s" % len(self.content)
         return self.content
