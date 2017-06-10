@@ -1,7 +1,7 @@
 from django.db import models
 
-from entertainment.base.models.Audit import Audit
-from entertainment.base.models.Slug import Slug
+from app.base.models.Audit import Audit
+from app.base.models.Slug import Slug
 
 
 class Genre(Slug, Audit):

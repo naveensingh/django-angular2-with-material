@@ -1,7 +1,7 @@
 from rest_framework import routers
 
-from entertainment.artists.models import Artist
-from entertainment.services.factory.v1.APIFactory import APIFactory
+from app.entertainment.artists.models.Artist import Artist
+from app.services.factory.v1.APIFactory import APIFactory
 
 artists_router = routers.SimpleRouter(trailing_slash=True)
 api_factory = APIFactory(Artist)

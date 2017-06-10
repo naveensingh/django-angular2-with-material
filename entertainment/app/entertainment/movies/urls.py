@@ -1,7 +1,8 @@
 from rest_framework import routers
 
-from entertainment.movies.models import Movie, Genre
-from entertainment.services.factory.v1.APIFactory import APIFactory
+from app.entertainment.movies.models.Movie import Movie
+from app.entertainment.movies.models.Genre import Genre
+from app.services.factory.v1.APIFactory import APIFactory
 
 movies_router = routers.SimpleRouter(trailing_slash=True)
 api_factory = APIFactory(Movie)

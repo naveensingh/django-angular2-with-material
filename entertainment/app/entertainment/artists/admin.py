@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from entertainment.artists.models import Artist
-from entertainment.movies.models import Genre
+from app.entertainment.artists.models.Artist import Artist
+from app.entertainment.movies.models.Genre import Genre
 
 
 class ArtistAdmin(admin.ModelAdmin):

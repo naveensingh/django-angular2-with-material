@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.timesince import timesince
 
-from entertainment.artists.models.Artist import Artist
-from entertainment.base.models.Audit import Audit
-from entertainment.base.models.Slug import Slug
-from entertainment.movies.models.Genre import Genre
+from app.base.models.Audit import Audit
+from app.base.models.Slug import Slug
+from app.entertainment.artists.models.Artist import Artist
+from app.entertainment.movies.models.Genre import Genre
 
 
 class Movie(Slug, Audit):
