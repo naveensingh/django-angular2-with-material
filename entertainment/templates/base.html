@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies and more | Naveen Singh</title>
+    <!-- Load common libraries -->
+    <script src="{% static "app/packages/typescript.min.js" %}"></script>
+    <script src="{% static "app/packages/core.min.js" %}"></script>
+    <script src="{% static "app/packages/zone.min.js" %}"></script>
+    <script src="{% static "app/packages/system.js" %}"></script>
+    <script src="{% static "app/packages/hammer.min.js" %}"></script>
+    <script src="{% static "app/packages/web-animations.min.js" %}"></script>
+    <!-- Configure SystemJS -->
+    <script src="{% static "app/systemjs.config.js" %}"></script>
+    <script>
+        System
+            .import('/static/app/main.ts')
+            .catch(console.error.bind(console));
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- Load the Angular Material stylesheet -->
+    <link href="{% static "app/css/purple-green.css" %}" rel="stylesheet">
+    <link href="{% static "app/css/style.css" %}" rel="stylesheet">
+
+
+</head>
+
+<body class="mat-app-background">
+<material-app>
+    <div class="loader">
+        <div class="loader-inner">
+            <h1>Loading the simple movies app</h1> <br>
+            <h1>Made with Angular 2 and Angular Material.</h1>
+            <p>By <a href="https://twitter.com/official_naveen" target="_blank">@official_naveen</a> |
+                <a href="https://naveensingh.net" target="_blank">https://naveensingh.net</a>
+            </p>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+</material-app>
+</body>
+
+</html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
