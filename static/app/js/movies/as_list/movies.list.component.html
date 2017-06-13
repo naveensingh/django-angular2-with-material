@@ -1,1 +1,67 @@
-<div *ngFor="let movie of movies">{{ movie | json }}</div>
+<table class="table">
+    <thead class="table-head">
+    <tr>
+        <th>Title</th>
+        <th>Release date</th>
+        <th>Genre</th>
+        <th>Directors</th>
+        <th>Actors</th>
+    </tr>
+    <tr>
+        <th>
+            <md-input-container class="input-container">
+                <input mdInput placeholder="Movie title" value="">
+            </md-input-container>
+        </th>
+        <th>
+            <div class="input-container">
+                <md-select placeholder="Release year">
+                    <md-option *ngFor="let food of foods" [value]="food.value">
+                        {{ food.viewValue }}
+                    </md-option>
+                </md-select>
+            </div>
+        </th>
+        <th>
+            <div class="input-container">
+                <md-select placeholder="Genre">
+                    <md-option *ngFor="let food of foods" [value]="food.value">
+                        {{ food.viewValue }}
+                    </md-option>
+                </md-select>
+            </div>
+        </th>
+        <th>
+            <md-input-container class="input-container">
+                <input mdInput placeholder="Directors" type="text" value="">
+            </md-input-container>
+        </th>
+        <th>
+            <md-input-container class="input-container">
+                <input mdInput placeholder="Actors" type="text" value="">
+            </md-input-container>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let movie of movies">
+        <td>{{movie.title}}</td>
+        <td>{{movie.release_date | date:'mediumDate'}}</td>
+        <td>
+            <span *ngFor="let genre of movie.genres">
+                {{genre.name}} <br>
+            </span>
+        </td>
+        <td>
+            <span *ngFor="let director of movie.directors">
+                {{director.name}} <br>
+            </span>
+        </td>
+        <td>
+            <span *ngFor="let actor of movie.actors">
+                {{actor.name}} <br>
+            </span>
+        </td>
+    </tr>
+    </tbody>
+</table>
