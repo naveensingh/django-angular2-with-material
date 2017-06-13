@@ -5,7 +5,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule}   from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpModule, JsonpModule} from '@angular/http';
-import {MoviesModule} from "./js/movies/movies.module";
 import {AppComponent} from './js/app.component';
 import {
     CdkDataTableModule,
@@ -40,8 +39,9 @@ import {
     MdTooltipModule,
     OverlayContainer
 } from '@angular/material';
-import {MoviesComponent} from "./js/movies/movies.component";
+import {MoviesListComponent} from "./js/movies/as_list/movies.list.component";
 import {MoviesService} from "./js/movies/app.movies.service";
+import {MoviesCardComponent} from "./js/movies/as_card/movies.card.component";
 
 /**
  * NgModule that includes all Material modules that are required to serve
@@ -95,7 +95,7 @@ export class EntertainmentMaterialModule {
         BrowserAnimationsModule
     ],
 
-    declarations: [AppComponent, MoviesComponent],
+    declarations: [AppComponent, MoviesListComponent, MoviesCardComponent],
     bootstrap: [AppComponent],
     providers: [MoviesService]
 })

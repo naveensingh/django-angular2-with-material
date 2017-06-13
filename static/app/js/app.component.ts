@@ -7,6 +7,12 @@ import {Component, Input} from '@angular/core';
 
 export class AppComponent {
     filter = {};
+    view_as: string = "list";
+
+    viewAs(value: string) {
+        this.view_as = value;
+        console.log(value);
+    }
 
     onChange(value) {
         console.log(this.filter);

@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {MoviesService} from "./app.movies.service";
+import {MoviesService} from "../app.movies.service";
 
 @Component({
     selector: 'movies-list',
-    templateUrl: '/static/app/js/movies/movies.component.html?' + new Date()
+    templateUrl: '/static/app/js/movies/as_list/movies.list.component.html?' + new Date()
 })
 
-export class MoviesComponent {
+export class MoviesListComponent {
     movies: Array<any>;
     selectedMovie = {};
 

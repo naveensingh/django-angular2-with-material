@@ -4,18 +4,26 @@
             Movies and more.
         </div>
         <div class="icons">
-            <button md-button class="md-icon-button">
-                <md-icon>list</md-icon>
-            </button>
-            <button md-button class="md-icon-button">
-                <md-icon>view_module</md-icon>
-            </button>
+            <span mdTooltip="View as list"  mdTooltipPosition="above">
+                <button md-button class="md-icon-button"
+                        [ngClass]="{'mat-primary': view_as == 'list'}"
+                        (click)="viewAs('list')">
+                    <md-icon>list</md-icon>
+                </button>
+            </span>
+            <span mdTooltip="View as cards" mdTooltipPosition="above">
+                <button md-button class="md-icon-button"
+                        [ngClass]="{'mat-primary': view_as == 'cards'}"
+                        (click)="viewAs('cards')">
+                    <md-icon>view_module</md-icon>
+                </button>
+            </span>
         </div>
     </md-toolbar>
     <md-card>
         <md-card-content>
-            <input [(ngModel)]="filter.name" placeholder="name" (ngModelChange)="onChange(filter)"/>
-            <movies-list></movies-list>
+            <movies-list *ngIf="view_as == 'list'"></movies-list>
+            <movies-card *ngIf="view_as == 'cards'"></movies-card>
         </md-card-content>
     </md-card>
 </div>
