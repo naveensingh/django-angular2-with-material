@@ -2,8 +2,10 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
+import {FormsModule}   from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {HttpModule} from '@angular/http';
+import {HttpModule, JsonpModule} from '@angular/http';
+import {MoviesModule} from "./js/movies/movies.module";
 import {AppComponent} from './js/app.component';
 import {
     CdkDataTableModule,
@@ -38,6 +40,8 @@ import {
     MdTooltipModule,
     OverlayContainer
 } from '@angular/material';
+import {MoviesComponent} from "./js/movies/movies.component";
+import {MoviesService} from "./js/movies/app.movies.service";
 
 /**
  * NgModule that includes all Material modules that are required to serve
@@ -76,7 +80,7 @@ import {
         CdkDataTableModule,
     ]
 })
-export class PlunkerMaterialModule {
+export class EntertainmentMaterialModule {
 }
 
 @NgModule({
@@ -84,19 +88,21 @@ export class PlunkerMaterialModule {
     imports: [
         BrowserModule,
         CommonModule,
+        FormsModule,
         HttpModule,
-        PlunkerMaterialModule,
+        JsonpModule,
+        EntertainmentMaterialModule,
         BrowserAnimationsModule
     ],
 
-    declarations: [AppComponent],
+    declarations: [AppComponent, MoviesComponent],
     bootstrap: [AppComponent],
-    providers: []
+    providers: [MoviesService]
 })
-export class PlunkerAppModule {
+export class EntertainmentAppModule {
 }
 
-platformBrowserDynamic().bootstrapModule(PlunkerAppModule);
+platformBrowserDynamic().bootstrapModule(EntertainmentAppModule);
 
 /*
  Copyright 2016 Google Inc. All Rights Reserved.

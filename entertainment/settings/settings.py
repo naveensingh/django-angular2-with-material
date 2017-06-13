@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_filters',
+    'django_filters',
     # app
     'app.entertainment.artists',
     'app.entertainment.movies',

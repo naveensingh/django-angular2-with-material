@@ -10,6 +10,9 @@ System.config({
         },
         'vendor': {
             defaultExtension: 'js'
+        },
+        rxjs: {
+            defaultExtension: 'js'
         }
     }
 });
@@ -17,7 +20,6 @@ System.config({
 System.config({
     map: {
         'main': '/static/app/main.js',
-
         // Angular specific mappings.
         '@angular/core': 'https://unpkg.com/@angular/core/bundles/core.umd.js',
         '@angular/common': 'https://unpkg.com/@angular/common/bundles/common.umd.js',
@@ -31,7 +33,6 @@ System.config({
         '@angular/platform-browser/animations': 'https://unpkg.com/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
         '@angular/platform-browser-dynamic': 'https://unpkg.com/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
         '@angular/material': 'https://rawgit.com/angular/material2-builds/master/bundles/material.umd.js',
-
         // Rxjs mapping
         'rxjs': 'https://unpkg.com/rxjs'
     },

@@ -1,3 +1,21 @@
-<md-toolbar class="md-whiteframe-glow-z1">
-    Movies and more.
-</md-toolbar>
+<div class="container">
+    <md-toolbar>
+        <div class="title">
+            Movies and more.
+        </div>
+        <div class="icons">
+            <button md-button class="md-icon-button">
+                <md-icon>list</md-icon>
+            </button>
+            <button md-button class="md-icon-button">
+                <md-icon>view_module</md-icon>
+            </button>
+        </div>
+    </md-toolbar>
+    <md-card>
+        <md-card-content>
+            <input [(ngModel)]="filter.name" placeholder="name" (ngModelChange)="onChange(filter)"/>
+            <movies-list></movies-list>
+        </md-card-content>
+    </md-card>
+</div>
