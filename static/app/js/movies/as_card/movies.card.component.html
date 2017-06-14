@@ -1,1 +1,32 @@
-Hi
+<div class="columns clearfix">
+    <div class="columns-item" *ngFor="let movie of movies">
+        <div class="inner">
+            <md-card class="movie">
+                <md-card-header>
+                    <md-card-title>{{ movie.title }}</md-card-title>
+                    <md-card-subtitle>
+                        <span class="comma" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+                    </md-card-subtitle>
+                </md-card-header>
+                <img md-card-image *ngIf="movie.image_url" src="{{ movie.image_url }}">
+                <img md-card-image *ngIf="!movie.image_url" src="http://via.placeholder.com/350x475">
+                <md-card-content>
+                    <p>
+                        {{ movie.plot | limitTo:140 }}
+                    </p>
+                    <md-card-subtitle>
+                        <p *ngIf="movie.directors.length>0">Directed by: <span class="comma"
+                                                                               *ngFor="let director of movie.directors">{{ director.name }}</span>
+                        </p>
+                        <p *ngIf="movie.actors.length>0">Actors: <span class="comma"
+                                                                       *ngFor="let actor of movie.actors">{{ actor.name }}</span>
+                        </p>
+                    </md-card-subtitle>
+                </md-card-content>
+                <md-card-actions>
+                    <button md-button>KNOW MORE</button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+</div>

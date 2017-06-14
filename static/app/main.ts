@@ -42,6 +42,7 @@ import {
 import {MoviesListComponent} from "./js/movies/as_list/movies.list.component";
 import {MoviesService} from "./js/movies/app.movies.service";
 import {MoviesCardComponent} from "./js/movies/as_card/movies.card.component";
+import {LimitToPipe} from "./js/limitToPipe";
 
 /**
  * NgModule that includes all Material modules that are required to serve
@@ -95,7 +96,7 @@ export class EntertainmentMaterialModule {
         BrowserAnimationsModule
     ],
 
-    declarations: [AppComponent, MoviesListComponent, MoviesCardComponent],
+    declarations: [LimitToPipe, AppComponent, MoviesListComponent, MoviesCardComponent],
     bootstrap: [AppComponent],
     providers: [MoviesService]
 })
@@ -103,9 +104,3 @@ export class EntertainmentAppModule {
 }
 
 platformBrowserDynamic().bootstrapModule(EntertainmentAppModule);
-
-/*
- Copyright 2016 Google Inc. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license
- */

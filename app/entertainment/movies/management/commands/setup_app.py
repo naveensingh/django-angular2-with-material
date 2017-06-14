@@ -32,7 +32,7 @@ class Command(BaseCommand):
             movie.plot = item["info"].get("plot")
             movie.rank = item["info"].get("rank")
             movie.running_time_secs = item["info"].get("running_time_secs")
-            movie.image_url = item["info"].get("running_time_secs")
+            movie.image_url = item["info"].get("image_url")
             movie.save()
             if item["info"].get("actors"):
                 for actor in item["info"].get("actors"):

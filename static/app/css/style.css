@@ -161,6 +161,61 @@ table.table td {
 table.table td.number {
     text-align: right;
 }
+
 .mat-select-trigger {
-    font-size:12px;
+    font-size: 12px;
+}
+
+.col-33 {
+    width: 33%;
+    float: left;
+}
+
+.col-33 .inner {
+    padding: 10px;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+* html .clearfix {
+    zoom: 1;
+}
+
+/* IE6 */
+*:first-child + html .clearfix {
+    zoom: 1;
+}
+
+/* IE7 */
+
+.inner {
+    width: 100% !important;
+}
+
+.columns {
+    column-width: 325px;
+    column-gap: 10px;
+}
+
+.columns-item {
+    padding-bottom: 10px;
+    width: 100%;
+    display: inline-block;
+    column-break-inside: avoid;
+    transition: opacity .4s ease-in-out;
+}
+
+.comma:after {
+    content: ', ';
+}
+
+.comma:last-child:after {
+    content: '';
 }

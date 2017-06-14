@@ -45,7 +45,10 @@
     </thead>
     <tbody>
     <tr *ngFor="let movie of movies">
-        <td>{{movie.title}}</td>
+        <td>
+            <img *ngIf="movie.image_url" src="{{ movie.image_url }}" height="48" alt="{{movie.title}}">
+            {{movie.title}}
+        </td>
         <td>{{movie.release_date | date:'mediumDate'}}</td>
         <td>
             <span *ngFor="let genre of movie.genres">

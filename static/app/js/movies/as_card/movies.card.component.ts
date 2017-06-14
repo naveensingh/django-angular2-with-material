@@ -22,7 +22,7 @@ export class MoviesCardComponent {
     }
 
     ngOnInit(): void {
-        // this.getMovies();
+        this.getMovies();
         // this.getMovie("1308f2b6-e63d-4547-bf39-895d5c2eadbb"); // testing random movie for get
     }
 }
