@@ -1,6 +1,7 @@
 appnope==0.1.0
 backports.shutil-get-terminal-size==1.0.0
 decorator==4.0.11
+dj-config-url==0.1.1
 Django==1.11.2
 django-filter==1.0.4
 djangorestframework==3.6.3
