@@ -4,8 +4,9 @@ import logging
 from django.conf import settings
 from django.core.management import BaseCommand
 
-from app.entertainment.artists.models import Artist
-from app.entertainment.movies.models import Movie, Genre
+from app.entertainment.artists.models.Artist import Artist
+from app.entertainment.movies.models.Movie import Movie
+from app.entertainment.movies.models.Genre import Genre
 
 logger = logging.getLogger(__name__)
 
