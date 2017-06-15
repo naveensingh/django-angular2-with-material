@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let movie of movies">
+    <tr *ngFor="let movie of movies.results">
         <td>
             <img *ngIf="movie.image_url" src="{{ movie.image_url }}" height="48" alt="{{ movie.title }}">
             {{ movie.title }}
@@ -39,3 +39,15 @@
     </tr>
     </tbody>
 </table>
+<div class="icons" style="text-align: right;margin: 20px auto;">
+    <button *ngIf="movies.previous" md-button class="md-icon-button"
+            (click)="getMovies(filter, movies.previous)">
+        <md-icon>chevron_left</md-icon>
+        Previous
+    </button>
+    <button md-button class="md-icon-button"
+            (click)="getMovies(filter, movies.next)">
+        Next
+        <md-icon>chevron_right</md-icon>
+    </button>
+</div>

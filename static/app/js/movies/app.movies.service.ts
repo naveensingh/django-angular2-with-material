@@ -11,7 +11,7 @@ export class MoviesService {
 
     static extractDataArray(res: Response) {
         let body = res.json();
-        return body.results || [];
+        return body || {results: []};
     }
 
     static extractDataObject(res: Response) {
@@ -23,8 +23,8 @@ export class MoviesService {
         return error;
     }
 
-    getMovies(filters) {
-        return this.http.get(this.moviesUrl, {search: filters}).map(MoviesService.extractDataArray)
+    getMovies(filters, url = this.moviesUrl) {
+        return this.http.get(url, {search: filters}).map(MoviesService.extractDataArray)
             .catch(MoviesService.handleError);
     }
 

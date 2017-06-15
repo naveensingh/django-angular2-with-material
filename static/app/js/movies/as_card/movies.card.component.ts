@@ -9,7 +9,9 @@ import {MovieDialog} from "../movie.dialog.component";
 })
 
 export class MoviesCardComponent {
-    movies: Array<any>;
+    movies = {
+        results: []
+    };
     selectedMovie = {};
     filter = {
         search: ''
@@ -20,11 +22,11 @@ export class MoviesCardComponent {
     }
 
     onChange(value) {
-        this.getMovies(value);
+        this.getMovies(value, undefined);
     }
 
-    getMovies(value) {
-        this._moviesService.getMovies(value).subscribe(movies => this.movies = movies);
+    getMovies(value, url) {
+        this._moviesService.getMovies(value, url).subscribe(movies => this.movies = movies);
     }
 
     getMovie(slug: string) {
@@ -32,7 +34,7 @@ export class MoviesCardComponent {
     }
 
     ngOnInit(): void {
-        this.getMovies({});
+        this.getMovies({}, undefined);
     }
 
     openDialog(movie) {

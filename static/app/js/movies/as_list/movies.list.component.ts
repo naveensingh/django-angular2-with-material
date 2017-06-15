@@ -7,21 +7,23 @@ import {MoviesService} from "../app.movies.service";
 })
 
 export class MoviesListComponent {
-    movies: Array<any>;
+    movies = {
+        results: []
+    };
     selectedMovie = {};
     filter = {
-        search:''
+        search: ''
     };
 
     constructor(private _moviesService: MoviesService) {
     }
 
     onChange(value) {
-        this.getMovies(value);
+        this.getMovies(value, undefined);
     }
 
-    getMovies(value) {
-        this._moviesService.getMovies(value).subscribe(movies => this.movies = movies);
+    getMovies(value, url) {
+        this._moviesService.getMovies(value, url).subscribe(movies => this.movies = movies);
     }
 
     getMovie(slug: string) {
@@ -29,7 +31,6 @@ export class MoviesListComponent {
     }
 
     ngOnInit(): void {
-        this.getMovies({});
-        // this.getMovie("1308f2b6-e63d-4547-bf39-895d5c2eadbb"); // testing random movie for get
+        this.getMovies({}, undefined);
     }
 }

@@ -4,8 +4,8 @@
                value="">
     </md-input-container>
 </div>
-<div class="columns clearfix">
-    <div class="columns-item" *ngFor="let movie of movies">
+<div class="columns clearfix" *ngIf="movies.results">
+    <div class="columns-item" *ngFor="let movie of movies.results">
         <div class="inner">
             <md-card class="movie">
                 <md-card-header>
@@ -36,4 +36,16 @@
             </md-card>
         </div>
     </div>
+</div>
+<div class="icons" style="text-align: right;margin: 20px auto;">
+    <button *ngIf="movies.previous" md-button class="md-icon-button"
+            [ngClass]="{'mat-primary': view_as == 'cards'}"
+            (click)="getMovies(filter, movies.previous)">
+        <md-icon>chevron_left</md-icon> Previous
+    </button>
+    <button md-button class="md-icon-button"
+            [ngClass]="{'mat-primary': view_as == 'cards'}"
+            (click)="getMovies(filter, movies.next)">
+        Next <md-icon>chevron_right</md-icon>
+    </button>
 </div>
