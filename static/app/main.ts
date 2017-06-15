@@ -43,6 +43,7 @@ import {MoviesListComponent} from "./js/movies/as_list/movies.list.component";
 import {MoviesService} from "./js/movies/app.movies.service";
 import {MoviesCardComponent} from "./js/movies/as_card/movies.card.component";
 import {LimitToPipe} from "./js/limitToPipe";
+import {MovieDialog} from "./js/movies/movie.dialog.component";
 
 /**
  * NgModule that includes all Material modules that are required to serve
@@ -96,7 +97,8 @@ export class EntertainmentMaterialModule {
         BrowserAnimationsModule
     ],
 
-    declarations: [LimitToPipe, AppComponent, MoviesListComponent, MoviesCardComponent],
+    declarations: [LimitToPipe, AppComponent, MoviesListComponent, MoviesCardComponent, MovieDialog],
+    entryComponents: [MovieDialog],
     bootstrap: [AppComponent],
     providers: [MoviesService]
 })

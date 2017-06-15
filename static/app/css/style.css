@@ -219,3 +219,7 @@ table.table td.number {
 .comma:last-child:after {
     content: '';
 }
+.mat-dialog-container {
+    max-height: 550px;
+    padding: 0!important;
+}
