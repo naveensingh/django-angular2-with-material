@@ -20,12 +20,11 @@ export class MoviesService {
     }
 
     static handleError(error: error) {
-        console.log(error);
         return error;
     }
 
-    getMovies() {
-        return this.http.get(this.moviesUrl, {search: {search: ""}}).map(MoviesService.extractDataArray)
+    getMovies(filters) {
+        return this.http.get(this.moviesUrl, {search: filters}).map(MoviesService.extractDataArray)
             .catch(MoviesService.handleError);
     }
 

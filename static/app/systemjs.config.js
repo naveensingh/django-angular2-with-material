@@ -20,6 +20,7 @@ System.config({
 System.config({
     map: {
         'main': '/static/app/main.js',
+        'tslib': 'https://unpkg.com/tslib@1.7.1',
         // Angular specific mappings.
         '@angular/core': 'https://unpkg.com/@angular/core/bundles/core.umd.js',
         '@angular/common': 'https://unpkg.com/@angular/common/bundles/common.umd.js',

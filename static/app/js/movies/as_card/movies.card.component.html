@@ -1,3 +1,9 @@
+<div class="clearfix">
+    <md-input-container class="input-container">
+        <input [(ngModel)]="filter.search" (ngModelChange)="onChange(filter)" mdInput placeholder="Filter movie"
+               value="">
+    </md-input-container>
+</div>
 <div class="columns clearfix">
     <div class="columns-item" *ngFor="let movie of movies">
         <div class="inner">
@@ -5,7 +11,8 @@
                 <md-card-header>
                     <md-card-title>{{ movie.title }}</md-card-title>
                     <md-card-subtitle>
-                        <span class="comma" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+                        <span *ngIf="movie.release_date">{{ movie.release_date | date:'mediumDate' }} |</span> <span
+                            class="comma" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
                     </md-card-subtitle>
                 </md-card-header>
                 <img md-card-image *ngIf="movie.image_url" src="{{ movie.image_url }}">

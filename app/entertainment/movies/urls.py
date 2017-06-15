@@ -7,8 +7,8 @@ from app.services.factory.v1.APIFactory import APIFactory
 movies_router = routers.SimpleRouter(trailing_slash=True)
 api_factory = APIFactory(Movie)
 lookup_field = "slug"
-search_fields = ("title", "plot", "release_date", "rank")
-filter_fields = ("year", "actors__name", "rank")
+search_fields = ("title", "plot", "release_date", "actors__name", "directors__name", "genres__name", "rank")
+filter_fields = ("title", "year", "actors__name", "rank")
 
 genre_api_factory = APIFactory(Genre)
 genre_lookup_field = "slug"

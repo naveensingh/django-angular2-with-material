@@ -9,12 +9,20 @@ import {MoviesService} from "../app.movies.service";
 export class MoviesCardComponent {
     movies: Array<any>;
     selectedMovie = {};
+    filter = {
+        search: ''
+    };
+
 
     constructor(private _moviesService: MoviesService) {
     }
 
-    getMovies() {
-        this._moviesService.getMovies().subscribe(movies => this.movies = movies);
+    onChange(value) {
+        this.getMovies(value);
+    }
+
+    getMovies(value) {
+        this._moviesService.getMovies(value).subscribe(movies => this.movies = movies);
     }
 
     getMovie(slug: string) {
@@ -22,7 +30,7 @@ export class MoviesCardComponent {
     }
 
     ngOnInit(): void {
-        this.getMovies();
+        this.getMovies({});
         // this.getMovie("1308f2b6-e63d-4547-bf39-895d5c2eadbb"); // testing random movie for get
     }
 }
