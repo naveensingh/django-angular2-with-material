@@ -267,3 +267,9 @@ movies-card {
     text-align: center;
     padding-top: 20%;
 }
+edit-movie .input-container {
+    padding:15px 0;
+}
+edit-movie .mat-card {
+    min-width: 450px;
+}

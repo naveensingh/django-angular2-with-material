@@ -1,0 +1,38 @@
+<md-card class="movie">
+    <h1>Edit: {{ movie.title }}</h1>
+
+    <md-card-content>
+        <md-input-container class="input-container">
+            <input [(ngModel)]="movie.title" (ngModelChange)="onChange(movie)" mdInput
+                   placeholder="Title">
+        </md-input-container>
+        <div class="input-container">
+            <textarea [(ngModel)]="movie.plot" (ngModelChange)="onChange(movie)" mdInput
+                      placeholder="Plot"></textarea>
+        </div>
+        <div class="input-container">
+            <md-select placeholder="Genre">
+                <md-option *ngFor="let genre of genres" [value]="genre.id">
+                    {{ genre.name }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="input-container">
+            <md-select placeholder="Directors">
+                <md-option *ngFor="let director of directors" [value]="director.id">
+                    {{ director.name }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="input-container">
+            <md-select placeholder="Actors">
+                <md-option *ngFor="let actor of actors" [value]="actor.id">
+                    {{ actor.name }}
+                </md-option>
+            </md-select>
+        </div>
+    </md-card-content>
+    <md-card-actions>
+        <button md-button [md-dialog-close]="true">CLOSE</button>
+    </md-card-actions>
+</md-card>
