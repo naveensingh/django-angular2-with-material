@@ -3,36 +3,41 @@
 
     <md-card-content>
         <md-input-container class="input-container">
-            <input [(ngModel)]="movie.title" (ngModelChange)="onChange(movie)" mdInput
+            <input [(ngModel)]="movie.title" mdInput
                    placeholder="Title">
         </md-input-container>
+        <md-input-container class="input-container">
+            <input [(ngModel)]="movie.image_url" type="url" mdInput
+                   placeholder="Image url">
+        </md-input-container>
         <div class="input-container">
-            <textarea [(ngModel)]="movie.plot" (ngModelChange)="onChange(movie)" mdInput
+            <textarea [(ngModel)]="movie.plot" mdInput
                       placeholder="Plot"></textarea>
         </div>
         <div class="input-container">
-            <md-select placeholder="Genre">
-                <md-option *ngFor="let genre of genres" [value]="genre.id">
+            <md-select placeholder="Genre" [(ngModel)]="movie.genres" multiple>
+                <md-option *ngFor="let genre of genres.results" [value]="genre.id">
                     {{ genre.name }}
                 </md-option>
             </md-select>
         </div>
         <div class="input-container">
-            <md-select placeholder="Directors">
-                <md-option *ngFor="let director of directors" [value]="director.id">
+            <md-select placeholder="Directors" multiple [(ngModel)]="movie.directors">
+                <md-option *ngFor="let director of directors.results" [value]="director.id">
                     {{ director.name }}
                 </md-option>
             </md-select>
         </div>
         <div class="input-container">
-            <md-select placeholder="Actors">
-                <md-option *ngFor="let actor of actors" [value]="actor.id">
+            <md-select placeholder="Actors" multiple [(ngModel)]="movie.actors">
+                <md-option *ngFor="let actor of actors.results" [value]="actor.id">
                     {{ actor.name }}
                 </md-option>
             </md-select>
         </div>
     </md-card-content>
     <md-card-actions>
-        <button md-button [md-dialog-close]="true">CLOSE</button>
+        <button md-button [md-dialog-close]="movie">CLOSE</button>
+        <button md-button (click)="submitMovie(movie)" [md-dialog-close]="movie">SUBMIT</button>
     </md-card-actions>
 </md-card>

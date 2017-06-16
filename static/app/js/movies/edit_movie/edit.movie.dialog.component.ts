@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {MoviesService} from "../app.movies.service";
+import {ArtistsService} from "../services/app.artists.service";
+import {GenresService} from "../services/app.genres.service";
 
 @Component({
     selector: 'edit-movie',
@@ -8,17 +10,26 @@ import {MoviesService} from "../app.movies.service";
 
 export class EditMovieComponent {
     movie = {};
-    actors = [];
-    directors = [];
-    genres = [];
+    actors = {
+        results: []
+    };
+    directors = {
+        results: []
+    };
+    genres = {
+        results: []
+    };
 
-    constructor(private _moviesService: MoviesService) {
+    constructor(private _moviesService: MoviesService, private _artistsService: ArtistsService, private _genresService: GenresService) {
     }
 
-    onChange(value) {
-        console.log(value);
+    submitMovie(value) {
+        this._moviesService.updateMovie(value, value.slug).subscribe(movie => this.movie = movie);
     }
 
     ngOnInit(): void {
+        this._artistsService.getartists({forte: "Actor"}).subscribe(actors => this.actors = actors);
+        this._artistsService.getartists({forte: "Director"}).subscribe(directors => this.directors = directors);
+        this._genresService.getGenres({}).subscribe(genres => this.genres = genres);
     }
 }

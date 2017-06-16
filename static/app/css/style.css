@@ -252,6 +252,9 @@ movies-card {
 .selectedMovie .mat-card-image {
     max-width: calc(100% + 48px) !important;
 }
+.selectedMovie img {
+    max-width: 100%;
+}
 
 .text-center {
     text-align: center;
@@ -268,7 +271,7 @@ movies-card {
     padding-top: 20%;
 }
 edit-movie .input-container {
-    padding:15px 0;
+    padding:10px 0;
 }
 edit-movie .mat-card {
     min-width: 450px;

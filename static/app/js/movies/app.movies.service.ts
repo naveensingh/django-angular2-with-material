@@ -33,4 +33,12 @@ export class MoviesService {
         return this.http.get(url)
             .map(MoviesService.extractDataObject);
     }
+
+    updateMovie(movie, slug: string) {
+        const url = `${this.moviesUrl}/${slug}/?type=movie`;
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(url, movie, {headers: headers}).map(res => res.json())
+            .catch(MoviesService.handleError);
+    }
 }

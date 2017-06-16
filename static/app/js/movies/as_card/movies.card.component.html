@@ -56,24 +56,27 @@
                                 <p *ngIf="selectedMovie.release_date">
                                     Released: {{ selectedMovie.release_date | date:'mediumDate' }} </p>
                                 <md-chip-list>
-                                    <md-chip *ngFor="let genre of selectedMovie.genres">{{ genre.name }}</md-chip>
+                                    <md-chip
+                                            *ngFor="let genre of selectedMovie.readable_genres">{{ genre.name }}</md-chip>
                                 </md-chip-list>
                             </md-card-subtitle>
                             <md-card-subtitle>
-                                <p *ngIf="selectedMovie.directors.length>0">Directed by: <span class="comma"
-                                                                                               *ngFor="let director of selectedMovie.directors">{{ director.name }}</span>
+                                <p *ngIf="selectedMovie.readable_directors.length>0">Directed by: <span class="comma"
+                                                                                                        *ngFor="let director of selectedMovie.readable_directors">{{ director.name }}</span>
                                 </p>
-                                <p *ngIf="selectedMovie.actors.length>0">Actors: <span class="comma"
-                                                                                       *ngFor="let actor of selectedMovie.actors">{{ actor.name }}</span>
+                                <p *ngIf="selectedMovie.readable_actors.length>0">Actors: <span class="comma"
+                                                                                                *ngFor="let actor of selectedMovie.readable_actors">{{ actor.name }}</span>
                                 </p>
                             </md-card-subtitle>
                         </md-card-content>
                     </div>
                 </div>
+            </div>
+            <div class="clearfix" style="text-align: right">
                 <md-card-actions>
                     <a md-button href="http://www.google.com/search?q={{ selectedMovie.title }}" target="_blank">KNOW
                         MORE</a>
-                    <button md-buttom (click)="editMovie()">EDIT</button>
+                    <button md-button (click)="editMovie()">EDIT</button>
                 </md-card-actions>
             </div>
         </md-card>
