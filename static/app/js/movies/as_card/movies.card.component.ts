@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {MdDialog} from '@angular/material';
+import {MdDialog} from "@angular/material";
 import {MoviesService} from "../app.movies.service";
-import {MovieDialog} from "../movie.dialog.component";
 
 @Component({
     selector: 'movies-card',
@@ -13,12 +12,13 @@ export class MoviesCardComponent {
         results: []
     };
     selectedMovie = {};
+    clicked = false;
     filter = {
         search: ''
     };
 
 
-    constructor(private _moviesService: MoviesService, public dialog: MdDialog) {
+    constructor(private _moviesService: MoviesService) {
     }
 
     onChange(value) {
@@ -30,17 +30,11 @@ export class MoviesCardComponent {
     }
 
     getMovie(slug: string) {
-        this._moviesService.getMovie(slug).subscribe(movie => this.openDialog(movie));
+        this._moviesService.getMovie(slug).subscribe(movie => this.selectedMovie = movie);
     }
 
     ngOnInit(): void {
         this.getMovies({}, undefined);
     }
 
-    openDialog(movie) {
-        let dialogRef = this.dialog.open(MovieDialog, {
-            disableClose: true,
-        });
-        dialogRef.componentInstance.movie = movie;
-    }
 }

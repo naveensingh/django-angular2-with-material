@@ -2,12 +2,7 @@ body {
     font-family: Lato, Verdana, sans-serif !important;
     margin: 0;
     letter-spacing: 0.2px;
-    background: #2ecc71;
     height: 100%;
-}
-
-.mat-app-background {
-    background-color: #2ecc71;
 }
 
 .loader {
@@ -82,11 +77,6 @@ body {
 
 .md-whiteframe-glow-z1 {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.14), 0 0 2px 2px rgba(0, 0, 0, 0.098), 0 0 5px 1px rgba(0, 0, 0, 0.084);
-}
-
-.container {
-    max-width: 80%;
-    margin: 10% auto 0;
 }
 
 .title {
@@ -171,7 +161,13 @@ table.table td.number {
     float: left;
 }
 
-.col-33 .inner {
+.col-50 {
+    width: 50%;
+    float: left;
+}
+
+.col-33 .inner,
+.col-50 .inner {
     padding: 10px;
 }
 
@@ -195,9 +191,6 @@ table.table td.number {
 
 /* IE7 */
 
-.inner {
-    width: 100% !important;
-}
 
 .columns {
     column-width: 325px;
@@ -219,7 +212,58 @@ table.table td.number {
 .comma:last-child:after {
     content: '';
 }
+
 .mat-dialog-container {
     max-height: 550px;
-    padding: 0!important;
+    padding: 0 !important;
+}
+
+movies-card {
+    width: 100%;
+}
+
+.split-container {
+    width: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+.split-35 {
+    width: 34%;
+    float: left;
+    border-right: 1px solid #f3f3f3;
+    height: 82%;
+    position: fixed;
+    overflow: scroll;
+}
+
+.split-65 {
+    width: 60%;
+    position: fixed;
+    right: 3%;
+}
+
+.card-container {
+    width: 100%;
+    height: calc(100vh - 112px);
+    position: fixed !important;
+}
+
+.selectedMovie .mat-card-image {
+    max-width: calc(100% + 48px) !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.movies-list {
+    cursor: pointer;
+}
+.movies-list md-list-item:hover, md-list-item.active {
+    background: #f3f3f3;
+}
+.nomovie {
+    text-align: center;
+    padding-top: 20%;
 }

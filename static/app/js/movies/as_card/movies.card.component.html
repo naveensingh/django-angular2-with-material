@@ -1,51 +1,80 @@
 <div class="clearfix">
     <md-input-container class="input-container">
-        <input [(ngModel)]="filter.search" (ngModelChange)="onChange(filter)" mdInput placeholder="Filter movie"
+        <input [(ngModel)]="filter.search" (ngModelChange)="onChange(filter)" mdInput placeholder="Filter selectedMovie"
                value="">
     </md-input-container>
 </div>
-<div class="columns clearfix" *ngIf="movies.results">
-    <div class="columns-item" *ngFor="let movie of movies.results">
-        <div class="inner">
-            <md-card class="movie">
-                <md-card-header>
-                    <md-card-title>{{ movie.title }}</md-card-title>
-                    <md-card-subtitle>
-                        <span *ngIf="movie.release_date">{{ movie.release_date | date:'mediumDate' }} |</span> <span
-                            class="comma" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
-                    </md-card-subtitle>
-                </md-card-header>
-                <img md-card-image *ngIf="movie.image_url" src="{{ movie.image_url }}">
-                <img md-card-image *ngIf="!movie.image_url" src="http://via.placeholder.com/350x475">
-                <md-card-content>
-                    <p>
-                        {{ movie.plot | limitTo:140 }}
-                    </p>
-                    <md-card-subtitle>
-                        <p *ngIf="movie.directors.length>0">Directed by: <span class="comma"
-                                                                               *ngFor="let director of movie.directors">{{ director.name }}</span>
-                        </p>
-                        <p *ngIf="movie.actors.length>0">Actors: <span class="comma"
-                                                                       *ngFor="let actor of movie.actors">{{ actor.name }}</span>
-                        </p>
-                    </md-card-subtitle>
-                </md-card-content>
-                <md-card-actions>
-                    <button md-button (click)="getMovie(movie.slug)">KNOW MORE</button>
-                </md-card-actions>
-            </md-card>
-        </div>
+<div class="split-container clearfix">
+    <div class="split-35">
+        <md-list class="movies-list">
+            <md-list-item [ngClass]="{'active': selectedMovie.title == folder.title}"
+                          *ngFor="let folder of movies.results" (click)="getMovie(folder.slug);clicked = !clicked">
+                <md-icon md-list-icon>movie</md-icon>
+                <h4 md-line>{{ folder.title }}</h4>
+                <p md-line>{{ folder.plot }} </p>
+            </md-list-item>
+            <md-list-item>
+                <p md-line>
+                    <button *ngIf="movies.previous" md-button class="md-icon-button"
+                            [ngClass]="{'mat-primary': view_as == 'cards'}"
+                            (click)="getMovies(filter, movies.previous)">
+                        <md-icon>chevron_left</md-icon>
+                        Previous
+                    </button>
+                    <button md-button class="md-icon-button"
+                            *ngIf="movies.next"
+                            [ngClass]="{'mat-primary': view_as == 'cards'}"
+                            (click)="getMovies(filter, movies.next)">
+                        Next
+                        <md-icon>chevron_right</md-icon>
+                    </button>
+                </p>
+            </md-list-item>
+        </md-list>
     </div>
-</div>
-<div class="icons" style="text-align: right;margin: 20px auto;">
-    <button *ngIf="movies.previous" md-button class="md-icon-button"
-            [ngClass]="{'mat-primary': view_as == 'cards'}"
-            (click)="getMovies(filter, movies.previous)">
-        <md-icon>chevron_left</md-icon> Previous
-    </button>
-    <button md-button class="md-icon-button"
-            [ngClass]="{'mat-primary': view_as == 'cards'}"
-            (click)="getMovies(filter, movies.next)">
-        Next <md-icon>chevron_right</md-icon>
-    </button>
+    <div class="split-65">
+        <div class="nomovie" *ngIf="!selectedMovie.title">
+            <md-icon md-list-icon>movie</md-icon>
+            <p>Select a movie to view detail</p>
+        </div>
+        <md-card class="selectedMovie" *ngIf="selectedMovie.title">
+            <div class="clearfix">
+                <div class="col-50">
+                    <div class="inner text-center">
+                        <img *ngIf="selectedMovie.image_url" src="{{ selectedMovie.image_url }}">
+                        <img *ngIf="!selectedMovie.image_url" src="http://via.placeholder.com/350x475">
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="inner">
+                        <h2>{{ selectedMovie.title }}</h2>
+                        <md-card-content>
+                            <p>
+                                {{ selectedMovie.plot }}
+                            </p>
+                            <md-card-subtitle>
+                                <p *ngIf="selectedMovie.release_date">
+                                    Released: {{ selectedMovie.release_date | date:'mediumDate' }} </p>
+                                <md-chip-list>
+                                    <md-chip *ngFor="let genre of selectedMovie.genres">{{ genre.name }}</md-chip>
+                                </md-chip-list>
+                            </md-card-subtitle>
+                            <md-card-subtitle>
+                                <p *ngIf="selectedMovie.directors.length>0">Directed by: <span class="comma"
+                                                                                               *ngFor="let director of selectedMovie.directors">{{ director.name }}</span>
+                                </p>
+                                <p *ngIf="selectedMovie.actors.length>0">Actors: <span class="comma"
+                                                                                       *ngFor="let actor of selectedMovie.actors">{{ actor.name }}</span>
+                                </p>
+                            </md-card-subtitle>
+                        </md-card-content>
+                    </div>
+                </div>
+                <md-card-actions>
+                    <a md-button href="http://www.google.com/search?q={{ selectedMovie.title }}" target="_blank">KNOW
+                        MORE</a>
+                </md-card-actions>
+            </div>
+        </md-card>
+    </div>
 </div>
