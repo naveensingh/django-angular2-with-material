@@ -17,7 +17,7 @@
     <script src="{% static "app/systemjs.config.js" %}"></script>
     <script>
         System
-            .import('https://naveenintouch.s3-eu-west-1.amazonaws.com/app/main.ts')
+            .import('/static/app/main.ts')
             .catch(console.error.bind(console));
     </script>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
