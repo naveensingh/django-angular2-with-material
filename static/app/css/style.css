@@ -317,4 +317,7 @@ md-card-content {
         position: relative!important;
     }
 
+    edit-movie .mat-card {
+        min-width: 0;
+    }
 }
