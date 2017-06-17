@@ -70,7 +70,9 @@ export class MoviesListComponent {
         });
         dialogRef.componentInstance.movie = movie;
         dialogRef.afterClosed().subscribe(result => {
-            this.getMovie(result["slug"]);
+            if(result["slug"]){
+                this.getMovie(result["slug"]);
+            }
         });
     }
     ngOnInit(): void {
