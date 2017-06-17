@@ -19,7 +19,7 @@
             </span>
     </div>
 </md-toolbar>
-<md-card class="card-container">
+<md-card class="card-container {{ view_as }}" >
     <md-card-content>
         <movies-list *ngIf="view_as == 'list'"></movies-list>
         <movies-card *ngIf="view_as == 'cards'"></movies-card>

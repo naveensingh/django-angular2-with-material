@@ -10,6 +10,7 @@ import {GenresService} from "../services/app.genres.service";
 
 export class EditMovieComponent {
     movie = {};
+    selectedMovie = {};
     actors = {
         results: []
     };
@@ -24,7 +25,7 @@ export class EditMovieComponent {
     }
 
     submitMovie(value) {
-        this._moviesService.updateMovie(value, value.slug).subscribe(movie => this.movie = movie);
+        this._moviesService.updateMovie(value, value.slug).subscribe(movie => this.selectedMovie = movie);
     }
 
     ngOnInit(): void {

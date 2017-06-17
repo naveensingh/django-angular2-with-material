@@ -4,9 +4,11 @@
                value="">
     </md-input-container>
 </div>
-<table class="table">
+<div class="table-wrapper">
+    <table class="table">
     <thead class="table-head">
     <tr>
+        <th>Actions</th>
         <th>Title</th>
         <th>Release date</th>
         <th>Genre</th>
@@ -15,7 +17,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let movie of movies.results">
+    <tr *ngFor="let movie of movies.results;let i = index" [attr.data-index]="i">
+        <td>
+            <button md-button (click)="editMovie(movie.slug, true, i)">
+                <md-icon>mode_edit</md-icon>
+            </button>
+        </td>
         <td>
             <img *ngIf="movie.image_url" src="{{ movie.image_url }}" height="48" alt="{{ movie.title }}">
             {{ movie.title }}
@@ -39,6 +46,8 @@
     </tr>
     </tbody>
 </table>
+</div>
+
 <div class="icons" style="text-align: right;margin: 20px auto;">
     <button *ngIf="movies.previous" md-button class="md-icon-button"
             (click)="getMovies(filter, movies.previous)">
