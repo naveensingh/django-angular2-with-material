@@ -16,21 +16,21 @@
         </div>
         <div class="input-container">
             <md-select placeholder="Genre" [(ngModel)]="movie.genres" multiple>
-                <md-option *ngFor="let genre of genres.results" [value]="genre.id">
+                <md-option *ngFor="let genre of genres" [value]="genre.id">
                     {{ genre.name }}
                 </md-option>
             </md-select>
         </div>
         <div class="input-container">
             <md-select placeholder="Directors" multiple [(ngModel)]="movie.directors">
-                <md-option *ngFor="let director of directors.results" [value]="director.id">
+                <md-option *ngFor="let director of directors" [value]="director.id">
                     {{ director.name }}
                 </md-option>
             </md-select>
         </div>
         <div class="input-container">
             <md-select placeholder="Actors" multiple [(ngModel)]="movie.actors">
-                <md-option *ngFor="let actor of actors.results" [value]="actor.id">
+                <md-option *ngFor="let actor of actors" [value]="actor.id">
                     {{ actor.name }}
                 </md-option>
             </md-select>

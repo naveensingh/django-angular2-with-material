@@ -11,15 +11,9 @@ import {GenresService} from "../services/app.genres.service";
 export class EditMovieComponent {
     movie = {};
     selectedMovie = {};
-    actors = {
-        results: []
-    };
-    directors = {
-        results: []
-    };
-    genres = {
-        results: []
-    };
+    actors = [];
+    directors = [];
+    genres = [];
 
     constructor(private _moviesService: MoviesService, private _artistsService: ArtistsService, private _genresService: GenresService) {
     }
@@ -29,8 +23,11 @@ export class EditMovieComponent {
     }
 
     ngOnInit(): void {
-        this._artistsService.getartists({forte: "Actor"}).subscribe(actors => this.actors = actors);
-        this._artistsService.getartists({forte: "Director"}).subscribe(directors => this.directors = directors);
-        this._genresService.getGenres({}).subscribe(genres => this.genres = genres);
+        this._artistsService.getartists({all: true, forte: "Actor"}).subscribe(actors => this.actors = actors);
+        this._artistsService.getartists({
+            all: true,
+            forte: "Director"
+        }).subscribe(directors => this.directors = directors);
+        this._genresService.getGenres({all: true}).subscribe(genres => this.genres = genres);
     }
 }

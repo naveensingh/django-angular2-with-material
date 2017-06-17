@@ -24,6 +24,16 @@ class APIFactory:
             search_fields = _search_fields
             filter_fields = _filter_fields
 
+            def list(self, request, *args, **kwargs):
+                queryset = self.filter_queryset(self.get_queryset())
+                if request.GET.get('all') != "true":
+                    page = self.paginate_queryset(queryset)
+                    if page is not None:
+                        serializer = self.get_serializer(page, many=True)
+                        return self.get_paginated_response(serializer.data)
+                serializer = self.get_serializer(queryset, many=True)
+                return Response(serializer.data)
+
             def update(self, request, *args, **kwargs):
                 partial = kwargs.pop('partial', True)
                 movie = request.GET.get('type')

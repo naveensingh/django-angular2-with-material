@@ -11,7 +11,7 @@ export class ArtistsService {
 
     static extractDataArray(res: Response) {
         let body = res.json();
-        return body || {results: []};
+        return body || [];
     }
 
     static handleError(error: error) {
