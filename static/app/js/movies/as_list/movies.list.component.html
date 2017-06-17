@@ -24,9 +24,8 @@
             </button>
         </td>
         <td>
-            <img *ngIf="movie.image_url" src="{{ movie.image_url }}">
-            <img *ngIf="!movie.image_url"
-                 src="http://via.placeholder.com/350x475">
+            <img *ngIf="movie.image_url" height="48" src="{{ movie.image_url }}">
+            <img *ngIf="!movie.image_url" height="48" src="http://via.placeholder.com/350x475">
             <strong>{{ movie.title }}</strong>
 
         </td>
