@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     def handle(self, **options):
-        filepath = settings.BASE_DIR + "/moviedata_temp.json"
+        filepath = settings.BASE_DIR + "/moviedata.json"
         try:
             with open(filepath) as open_file:
                 self.content = json.loads(open_file.read())
@@ -36,10 +36,7 @@ class Command(BaseCommand):
             movie.plot = item["info"].get("plot")
             movie.rank = item["info"].get("rank")
             movie.running_time_secs = item["info"].get("running_time_secs")
-            if item["info"].get("image_url"):
-                movie = self.getFile(movie, item["info"].get("image_url"))
-            if not movie.image:
-                movie.image_url = item["info"].get("image_url")
+            movie.image_url = item["info"].get("image_url")
             movie.save()
             if item["info"].get("actors"):
                 for actor in item["info"].get("actors"):
@@ -58,14 +55,3 @@ class Command(BaseCommand):
             print "-"
         print "Total movies added: %s" % len(self.content)
         return self.content
-
-    def getFile(self, movie, url):
-        try:
-            extension = url.split('.')[-1]
-            document_file = urllib2.urlopen(url)
-            file_content = ContentFile(document_file.read())
-            movie.image.save(str(uuid.uuid4()) + '.' + extension, file_content)
-            return movie
-        except Exception as es:
-            print es, movie.title
-            return movie
