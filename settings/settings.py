@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_filters',
@@ -123,31 +122,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 # MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static/media')
 # UPLOAD_ROOT = os.path.join(PROJECT_ROOT, 'static/media/uploads')
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
-AWS_STORAGE_BUCKET_NAME = "naveenintouch"
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-STATIC_ROOT = STATIC_URL
-MEDIA_ROOT = STATIC_ROOT + 'media'
-UPLOAD_ROOT = 'media/uploads/'
-MEDIA_URL = STATIC_URL + 'media/../'
-DOWNLOAD_ROOT = os.path.join(PROJECT_ROOT, "static/media/downloads")
-DOWNLOAD_URL = STATIC_URL + "media/downloads"
-
-AWS_ACCESS_KEY_ID = "AKIAIN3V4Y7PJJN34OPA"
-AWS_SECRET_ACCESS_KEY = "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"
-AWS_HEADERS = {
-    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
-    'Cache-Control': 'max-age=86400',
-}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 # STATICFILES_DIRS = [
