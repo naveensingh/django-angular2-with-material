@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_filters',
     'django_filters',
+    'storages',
     # app
     'app.entertainment.artists',
     'app.entertainment.movies',
@@ -121,11 +122,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static/media')
-UPLOAD_ROOT = os.path.join(PROJECT_ROOT, 'static/media/uploads')
-STATIC_URL = '/static/'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static/media')
+# UPLOAD_ROOT = os.path.join(PROJECT_ROOT, 'static/media/uploads')
+# STATIC_URL = '/static/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -133,11 +134,29 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, "static")
 # ]
 # STATIC_URL = '/static/'
-
-
-MEDIA_URL = STATIC_URL + "media/"
+# MEDIA_URL = STATIC_URL + "media/"
 # MEDIA_ROOT = os.path.join(BASE_DIR, *MEDIA_URL.strip("/").split("/"))
 
+
+AWS_STORAGE_BUCKET_NAME = "naveenintouch"
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATIC_ROOT = STATIC_URL
+MEDIA_ROOT = STATIC_ROOT + 'media'
+UPLOAD_ROOT = 'media/uploads/'
+MEDIA_URL = STATIC_URL + 'media/../'
+DOWNLOAD_ROOT = os.path.join(PROJECT_ROOT, "static/media/downloads")
+DOWNLOAD_URL = STATIC_URL + "media/downloads"
+
+AWS_ACCESS_KEY_ID = "AKIAIN3V4Y7PJJN34OPA"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_HEADERS = {
+    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
+    'Cache-Control': 'max-age=86400',
+}
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 40,
