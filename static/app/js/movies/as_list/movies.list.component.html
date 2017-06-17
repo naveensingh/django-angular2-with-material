@@ -24,8 +24,13 @@
             </button>
         </td>
         <td>
-            <img *ngIf="movie.image_url" src="{{ movie.image_url }}" height="48" alt="{{ movie.title }}">
-            {{ movie.title }}
+            <img *ngIf="!movie.image && !movie.image_url" height="48"
+                 src="http://via.placeholder.com/350x475" alt="{{ movie.title }}">
+            <img *ngIf="!movie.image && movie.image_url" height="48" src="{{ movie.image_url }}"
+                 alt="{{ movie.title }}">
+            <img *ngIf="movie.image  && !movie.image_url" height="48" src="{{ movie.image }}" alt="{{ movie.title }}">
+            <strong>{{ movie.title }}</strong>
+
         </td>
         <td>{{ movie.release_date | date:'mediumDate' }}</td>
         <td>

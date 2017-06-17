@@ -14,6 +14,7 @@ class Movie(Slug, Audit):
     rating = models.FloatField(null=True, blank=True)
     rank = models.FloatField(null=True, blank=True)
     year = models.FloatField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="uploads")
     image_url = models.URLField(null=True, blank=True)
     running_time_secs = models.FloatField(null=True, blank=True)
     directors = models.ManyToManyField(Artist, related_name="directors")
