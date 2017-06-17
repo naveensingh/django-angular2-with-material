@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     def handle(self, **options):
-        filepath = settings.BASE_DIR + "/moviedata.json"
+        filepath = settings.BASE_DIR + "/moviedata_temp.json"
         try:
             with open(filepath) as open_file:
                 self.content = json.loads(open_file.read())
